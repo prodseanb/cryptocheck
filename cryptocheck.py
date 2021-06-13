@@ -4,7 +4,7 @@ import sys
 from datetime import datetime
 
 		
-def get_other(): #scrape news
+def get_other(): #scrape news, market cap, other data from coindesk
 	URL = f"https://www.coindesk.com/price/{name}"
 	page = requests.get(URL)
 	soup = BeautifulSoup(page.text, 'html.parser')
