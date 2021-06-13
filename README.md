@@ -39,14 +39,14 @@ Planning to add more features. v1.1 commit:
 - Latest news  
 - Documentation
 ```
-[*] Date and time: 13/06/2021 15:00:06
-[*] Coin: Cardano
-[*] Abbrv: (ADA)
-[*] Current Price: $1.49
-[*] Rank: Rank #5
-[*] Market Cap: $47.93B
-[*] Latest news: Ethereum and XRP Looking More Attractive as Investors Rush to Exit Bitcoin Funds 
-[*] Source: https://www.coindesk.com/price/cardano
+[*] Date and time: 13/06/2021 15:37:52
+[*] Coin: Bitcoin
+[*] Abbrv: (BTC)
+[*] Current Price: $37,449.00
+[*] Rank: Rank #1
+[*] Market Cap: $701.21B
+[*] Latest news: Tesla Will Resume Taking Bitcoin as Payment Once Miners Go 50% Green, Musk Says 
+[*] Source: https://www.coindesk.com/price/bitcoin
 ```
 ### License
 [MIT License](https://github.com/prodseanb/cryptocheck/blob/master/LICENSE)
