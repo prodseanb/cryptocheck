@@ -17,8 +17,7 @@ def get_market_cap(): #scrape market cap
 					val = f.get_text()
 					market.append(val)
 					market_cap = market[0]
-					market_cap_val = market_cap
-	print("[*] Market Cap: "+ market_cap_val)
+	print("[*] Market Cap: "+ market_cap)
 		
 def get_news(): #scrape news
 	URL = f"https://www.coindesk.com/price/{name}"
@@ -35,7 +34,7 @@ def get_news(): #scrape news
 					news_val = a.get_text()
 					news.append(news_val)
 	print("[*] Latest news: "+ news[0] + f"\n[*] Source: https://www.coindesk.com/price/{name}")
-
+	
 
 def get_coin(name):
 	URL = f"https://coinmarketcap.com/currencies/{name}"
@@ -101,7 +100,11 @@ def get_coin(name):
 if __name__ == "__main__":
 	try:
 		name = sys.argv[1]
-		get_coin(name)
+		request = requests.get(f'https://coinmarketcap.com/currencies/{name}')
+		if request.status_code == 200: # check if url exists
+			get_coin(name)
+		else:
+			raise IndexError
 	except IndexError: # put a short documentation here
 		print('''
 CryptoCheck v1.0 (https://github.com/prodseanb/cryptocheck)
@@ -114,4 +117,9 @@ Examples:
 	python3 cryptocheck.py bitcoin
 	python3 cryptocheck.py cardano
 			''')
-	
+	except UnboundLocalError:
+		print(f"[!] No news found. Please check https://coinmarketcap.com/currencies/{name}/") 
+
+#Add more options/argv capabilities
+#scrape 24h volume
+#scrape circulating supply
