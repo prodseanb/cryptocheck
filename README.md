@@ -31,10 +31,10 @@ URL = f"https://coinmarketcap.com/currencies/{name}"
 ### Status: Beta
 Need more features. Current commit only returns the price and rank. Going to be working on scraping more specific data.
 ```
-[*] Selected coin: cardano
-[*] Date and time: 13/06/2021 02:19:30
+[*] Date and time: 13/06/2021 03:02:33
 [*] Coin: Cardano
-[*] Current Price: $1.44
+[*] Abbrv: (ADA)
+[*] Current Price: $1.45
 [*] Rank: Rank #5
 ```
 ### License
