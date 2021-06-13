@@ -3,23 +3,8 @@ from bs4 import BeautifulSoup
 import sys
 from datetime import datetime
 
-
-def get_market_cap(): #scrape market cap
-	URL = f"https://www.coindesk.com/price/{name}"
-	page = requests.get(URL)
-	soup = BeautifulSoup(page.text, 'html.parser')
-
-	market = []
-	for a in soup.findAll('div', class_="coin-info-list price-list"):
-		for d in a.findAll('div', class_="coin-info-block"):
-			for e in d.findAll('div', class_="data-definition"):
-				for f in e.findAll('div', class_="price-medium"):
-					val = f.get_text()
-					market.append(val)
-					market_cap = market[0]
-	print("[*] Market Cap: "+ market_cap)
 		
-def get_news(): #scrape news
+def get_other(): #scrape news
 	URL = f"https://www.coindesk.com/price/{name}"
 	page = requests.get(URL)
 	soup = BeautifulSoup(page.text, 'html.parser')
@@ -33,6 +18,17 @@ def get_news(): #scrape news
 					b = a.find('a')
 					news_val = a.get_text()
 					news.append(news_val)
+
+	market = []
+	for a in soup.findAll('div', class_="coin-info-list price-list"):
+		for d in a.findAll('div', class_="coin-info-block"):
+			for e in d.findAll('div', class_="data-definition"):
+				for f in e.findAll('div', class_="price-medium"):
+					val = f.get_text()
+					market.append(val)
+					market_cap = market[0]
+
+	print("[*] Market Cap: "+ market_cap)
 	print("[*] Latest news: "+ news[0] + f"\n[*] Source: https://www.coindesk.com/price/{name}")
 	
 
@@ -94,9 +90,8 @@ def get_coin(name):
 	for index, (val1, val2, val3, val4) in \
 	enumerate(zip(coin, abbrv, price, rank)):
 			print(f"[*] Coin: {val1}\n[*] Abbrv: {val2}\n[*] Current Price: {val3}\n[*] Rank: {val4}")
+	get_other()
 
-	get_market_cap()		
-	get_news()
 if __name__ == "__main__":
 	try:
 		name = sys.argv[1]
@@ -104,6 +99,7 @@ if __name__ == "__main__":
 		if request.status_code == 200: # check if url exists
 			get_coin(name)
 		else:
+			print('[!] Coin not found.')
 			raise IndexError
 	except IndexError: # put a short documentation here
 		print('''
