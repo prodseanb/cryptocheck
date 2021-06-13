@@ -30,6 +30,9 @@ python3 cryptocheck.py [coin-name]
 URL = f"https://coinmarketcap.com/currencies/{name}"
 ```
 Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
+### v1.0
+- Coin price
+- Rank
 ### v1.1
 Planning to add more features. v1.1 commit:
 - Market cap
