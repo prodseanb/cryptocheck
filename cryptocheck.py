@@ -37,6 +37,13 @@ def get_coin(name):
 		coin.append(coin_name)
 		#print(coin)
 
+	#scrape abbrv
+	abbrv = []
+	for h1 in soup.findAll('h1', class_="priceHeading___2GB9O"):
+		for small in h1.findAll('small'):
+			abbrv_val = small.get_text()
+			abbrv.append(abbrv_val)
+
 	#scrape price
 	price = []
 	for p in soup.findAll('div', class_="priceValue___11gHJ"):
@@ -69,10 +76,9 @@ def get_coin(name):
 	dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 	print(f"[*] Date and time: {dt_string}")
 	#Output
-	for index, (val1, val2, val3) in \
-	enumerate(zip(coin, price, rank)):
-			print(f"[*] Coin: {val1}\n[*] Current Price: {val2}\n[*] Rank: {val3}")
-
+	for index, (val1, val2, val3, val4) in \
+	enumerate(zip(coin, abbrv, price, rank)):
+			print(f"[*] Coin: {val1}\n[*] Abbrv: {val2}\n[*] Current Price: {val3}\n[*] Rank: {val4}")
 if __name__ == "__main__":
 	try:
 		name = sys.argv[1]
