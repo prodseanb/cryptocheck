@@ -103,7 +103,7 @@ if __name__ == "__main__":
 			raise IndexError
 	except IndexError: # put a short documentation here
 		print('''
-CryptoCheck v1.0 (https://github.com/prodseanb/cryptocheck)
+CryptoCheck v1.1 (https://github.com/prodseanb/cryptocheck)
 	Keep track of the latest cryptocurrency data with CryptoCheck.
 Usage:	python3 cryptocheck.py [coin-name]
 	Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
