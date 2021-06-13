@@ -4,7 +4,7 @@ import sys
 from datetime import datetime
 
 
-def get_market_cap(): #fix this function
+def get_market_cap(): #scrape market cap
 	URL = f"https://www.coindesk.com/price/{name}"
 	page = requests.get(URL)
 	soup = BeautifulSoup(page.text, 'html.parser')
@@ -18,8 +18,24 @@ def get_market_cap(): #fix this function
 					market.append(val)
 					market_cap = market[0]
 					market_cap_val = market_cap
-					#print(market_cap_val)
-					#issue#1 -- list print twice
+	print("[*] Market Cap: "+ market_cap_val)
+		
+def get_news(): #scrape news
+	URL = f"https://www.coindesk.com/price/{name}"
+	page = requests.get(URL)
+	soup = BeautifulSoup(page.text, 'html.parser')
+
+	news = []
+	for div in soup.findAll('div', class_="card-text-block"):
+		for h2 in div.findAll('h2', class_="heading"):
+			for i in range(1):
+				a = h2.find('a')
+				for index in range(1):
+					b = a.find('a')
+					news_val = a.get_text()
+					news.append(news_val)
+	print("[*] Latest news: "+ news[0] + f"\n[*] Source: https://www.coindesk.com/price/{name}")
+
 
 def get_coin(name):
 	URL = f"https://coinmarketcap.com/currencies/{name}"
@@ -51,15 +67,11 @@ def get_coin(name):
 		price.append(price_val)
 		#print(price)
 
-	#scrape market cap
-	#get_market_cap() -- fix issue#1
-
 	#scrape rank
 	rank = []
 	for rank in soup.findAll('div', class_="namePill___3p_Ii namePillPrimary___2-GWA"):
 		rank_val = rank.get_text()
 		rank.append(rank_val)
-
 	print('''
 /***
  *     ██████╗██████╗ ██╗   ██╗██████╗ ████████╗ ██████╗  ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗
@@ -68,7 +80,11 @@ def get_coin(name):
  *    ██║     ██╔══██╗  ╚██╔╝  ██╔═══╝    ██║   ██║   ██║██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ 
  *    ╚██████╗██║  ██║   ██║   ██║        ██║   ╚██████╔╝╚██████╗██║  ██║███████╗╚██████╗██║  ██╗
  *     ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝
- *                                                                                               
+ *
+ *		v1.0 
+ *		@Author: prodseanb
+ *		@GitHub: https://github.com/prodseanb
+ *                                                                                              
  */
 		''')
 	#check date and time
@@ -79,10 +95,23 @@ def get_coin(name):
 	for index, (val1, val2, val3, val4) in \
 	enumerate(zip(coin, abbrv, price, rank)):
 			print(f"[*] Coin: {val1}\n[*] Abbrv: {val2}\n[*] Current Price: {val3}\n[*] Rank: {val4}")
+
+	get_market_cap()		
+	get_news()
 if __name__ == "__main__":
 	try:
 		name = sys.argv[1]
 		get_coin(name)
 	except IndexError: # put a short documentation here
-		print("fail")
+		print('''
+CryptoCheck v1.0 (https://github.com/prodseanb/cryptocheck)
+	Keep track of the latest cryptocurrency data with CryptoCheck.
+Usage:	python3 cryptocheck.py [coin-name]
+	Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
+Examples:
+		
+	python3 cryptocheck.py shiba-inu
+	python3 cryptocheck.py bitcoin
+	python3 cryptocheck.py cardano
+			''')
 	

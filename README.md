@@ -13,7 +13,8 @@
  *    ██║     ██╔══██╗  ╚██╔╝  ██╔═══╝    ██║   ██║   ██║██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ 
  *    ╚██████╗██║  ██║   ██║   ██║        ██║   ╚██████╔╝╚██████╗██║  ██║███████╗╚██████╗██║  ██╗
  *     ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝
- *      
+ *
+ *    v1.0      
  *    @Author: prodseanb
  *    @GitHub: https://github.com/prodseanb
  */
@@ -28,14 +29,21 @@ python3 cryptocheck.py [coin-name]
 ```bash
 URL = f"https://coinmarketcap.com/currencies/{name}"
 ```
-### Status: Beta
-Need more features. Current commit only returns the price and rank. Going to be working on scraping more specific data.
+Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
+### v1.1
+Planning to add more features. v1.1 commit:
+- Market cap
+- Latest news  
+- Documentation
 ```
-[*] Date and time: 13/06/2021 03:02:33
+[*] Date and time: 13/06/2021 15:00:06
 [*] Coin: Cardano
 [*] Abbrv: (ADA)
-[*] Current Price: $1.45
+[*] Current Price: $1.49
 [*] Rank: Rank #5
+[*] Market Cap: $47.93B
+[*] Latest news: Ethereum and XRP Looking More Attractive as Investors Rush to Exit Bitcoin Funds 
+[*] Source: https://www.coindesk.com/price/cardano
 ```
 ### License
 [MIT License](https://github.com/prodseanb/cryptocheck/blob/master/LICENSE)
