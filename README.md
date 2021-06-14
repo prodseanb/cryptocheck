@@ -14,7 +14,7 @@
  *    ╚██████╗██║  ██║   ██║   ██║        ██║   ╚██████╔╝╚██████╗██║  ██║███████╗╚██████╗██║  ██╗
  *     ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝
  *
- *    v1.2      
+ *    v1.3      
  *    @Author: prodseanb
  *    @GitHub: https://github.com/prodseanb
  */
@@ -30,6 +30,29 @@ python3 cryptocheck.py [coin-name]
 URL = f"https://coinmarketcap.com/currencies/{name}"
 ```
 Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
+```
+CryptoCheck v1.3 (https://github.com/prodseanb/cryptocheck)
+    Keep track of the latest cryptocurrency data with CryptoCheck.
+Usage:  python3 cryptocheck.py [coin-name]
+    Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
+Output:
+    python3 cryptocheck.py [coin-name] [optional-arg]
+    Maximum of 2 parameters: currency name and display option
+    -a: Display all the results (optional, defaults to None when not used)
+    -p / --price: Display the current price
+    -c / --price-change: Display the 24h price change
+    -tv / --volume: Display the 24h trading volume
+    -lh / --low-high: Display the 24h low/high
+    -d / --dominance: Display the market dominance
+    -s / --supply: Display the circulating supply
+    -mc / --market-cap: Display the market cap
+    -n / --news: Display the latest news
+Examples:
+    Try executing these examples.   
+    python3 cryptocheck.py dogecoin -a
+    python3 cryptocheck.py bitcoin --news
+    python3 cryptocheck.py cardano -mc
+```
 ### v1.0
 - Coin price
 - Rank
@@ -42,18 +65,24 @@ Planning to add more features. v1.1 commit:
 - 24h low/high
 - 24h trading volume
 - Circulating supply
+### v1.3
+- 24h price change
+- Market dominance
+- Optional arguments
 ```
-[*] Date and time: 13/06/2021 23:16:01
-[*] Coin: Dogecoin
-[*] Abbrv: (DOGE)
-[*] Current Price: $0.3236
-[*] Rank: Rank #6
-[24h] Low: $0.3079  ------------------  [24h] High: $0.33
-[24h] Trading volume: $1,547,795,850
-[*] Circulating supply: 130.01B DOGE
-[*] Market Cap: $42.08B
-[*] Latest news: No DOGE Allowed? Thai SEC Bans Meme, Fan and Exchange Tokens as Well as NFTs 
-[*] Source: https://www.coindesk.com/price/dogecoin
+[*] Date and time: 14/06/2021 16:18:10
+[*] Coin: Ethereum
+[*] Abbrv: (ETH)
+[*] Current price: $2,545.63
+[*] Rank: Rank #2
+[24h] Low: $2,469.39  ------------------  [24h] High: $2,606.43
+[24h] Trading volume: $28,941,341,401
+[24h] Price change: $60.43
+[*] Market dominance: 18.27%
+[*] Circulating supply: 116,290,438.81 ETH
+[*] Market cap: $296,032,541,530
+[*] Latest news: Bitcoin and Ether Price Indicators Support Near-Term ‘Relief Rally’ 
+[*] Source: https://www.coindesk.com/price/ethereum
 ```
 ### Don't forget to install the requirements...
 ```bash

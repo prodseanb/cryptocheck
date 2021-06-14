@@ -5,13 +5,14 @@ from datetime import datetime
 import platform
 import subprocess
 
-		
-def get_other(): #scrape news, market cap, other data from coindesk
+
+news = []
+def get_news(): #scrape news from coindesk
 	URL = f"https://www.coindesk.com/price/{name}"
 	page = requests.get(URL)
 	soup = BeautifulSoup(page.text, 'html.parser')
 
-	news = []
+	
 	for div in soup.findAll('div', class_="card-text-block"):
 		for h2 in div.findAll('h2', class_="heading"):
 			for i in range(1):
@@ -20,21 +21,8 @@ def get_other(): #scrape news, market cap, other data from coindesk
 					b = a.find('a')
 					news_val = a.get_text()
 					news.append(news_val)
-
-	market = []
-	for a in soup.findAll('div', class_="coin-info-list price-list"):
-		for b in a.findAll('div', class_="coin-info-block"):
-			for c in b.findAll('div', class_="data-definition"):
-				for d in c.findAll('div', class_="price-medium"):
-					val = d.get_text()
-					market.append(val)
-					market_cap = market[0]
-
-	print("[*] Market Cap: "+ market_cap)
-	print("[*] Latest news: "+ news[0] + f"\n[*] Source: https://www.coindesk.com/price/{name}")
 	
-
-def get_coin(name):
+def get_coin(name, arg2=None):
 	URL = f"https://coinmarketcap.com/currencies/{name}"
 	page = requests.get(URL)
 	soup = BeautifulSoup(page.text, 'html.parser')
@@ -76,11 +64,19 @@ def get_coin(name):
 		val = span.get_text()
 		low_high.append(val)
 
-	# circulating supply, volume
+	# circulating supply, volume, market cap
 	supply = []
 	for div in soup.findAll('div', class_="statsValue___2iaoZ"):
 		val = div.get_text()
 		supply.append(val)
+
+	# 24h price change, market dominance
+	price_change = []
+	for table in soup.findAll('table'):
+		for td in table.findAll('td'):
+			for span in td.findAll('span'):
+				val = span.get_text()
+				price_change.append(val)
 
 	print('''
 /***
@@ -91,7 +87,7 @@ def get_coin(name):
  *    ╚██████╗██║  ██║   ██║   ██║        ██║   ╚██████╔╝╚██████╗██║  ██║███████╗╚██████╗██║  ██╗
  *     ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝
  *
- *		v1.2 
+ *		v1.3 
  *		@Author: prodseanb
  *		@GitHub: https://github.com/prodseanb
  *                                                                                              
@@ -103,14 +99,57 @@ def get_coin(name):
 	print(f"[*] Date and time: {dt_string}")
 
 	#Output
-	for index, (val1, val2, val3, val4) in \
-	enumerate(zip(coin, abbrv, price, rank)):
-			print(f"[*] Coin: {val1}\n[*] Abbrv: {val2}\n[*] Current Price: {val3}\n[*] Rank: {val4}")
+	# optional args
+	arg_price = ['-p', '--price']
+	arg_change = ['-c', '--price-change']
+	arg_volume = ['-tv', '--volume']
+	arg_low_high = ['-lh', '--low-high']
+	arg_dominance = ['-d', '--dominance']
+	arg_supply = ['-s', '--supply']
+	arg_market_cap = ['-mc', '--market-cap']
+	arg_news = ['-n', '--news']
+	# display all
+	if arg2 == "-a" or arg2 == None:
+		for index, (val1, val2, val3, val4) in \
+		enumerate(zip(coin, abbrv, price, rank)):
+				print(f"[*] Coin: {val1}\n[*] Abbrv: {val2}\n[*] Current price: {val3}\n[*] Rank: {val4}")
 
-	print("[24h] Low: " + low_high[0] + "  ------------------  [24h] High: " + low_high[1])
-	print("[24h] Trading volume: " + supply[2])
-	print("[*] Circulating supply: " + supply[4])
-	get_other()
+		print("[24h] Low: " + low_high[0] + "  ------------------  [24h] High: " + low_high[1])
+		print("[24h] Trading volume: " + supply[2])
+		print("[24h] Price change: " + price_change[0])
+		print("[*] Market dominance: " + price_change[6])
+		print("[*] Circulating supply: " + supply[4])
+		print("[*] Market cap: "+ supply[0])
+		get_news()
+		if len(news) == 0:
+			print(f'[!] News not found. Please check https://coinmarketcap.com/currencies/{name}/')
+		else:
+			print("[*] Latest news: "+ news[0] + f"\n[*] Source: https://www.coindesk.com/price/{name}")
+	# display current price
+	elif arg2 in arg_price:
+		print("[*] Current price: " + price[0])
+	# display price change
+	elif arg2 in arg_change:
+		print("[24h] Price change: " + price_change[0])
+	# display trading volume
+	elif arg2 in arg_volume:
+		print("[24h] Trading volume: " + supply[2])
+	# display 24h low/high
+	elif arg2 in arg_low_high:
+		print("[24h] Low: " + low_high[0] + "  ------------------  [24h] High: " + low_high[1])
+	# display market dominance
+	elif arg2 in arg_dominance:
+		print("[*] Market dominance: " + price_change[6])
+	# display supply
+	elif arg2 in arg_supply:
+		print("[*] Circulating supply: " + supply[4])
+	# display market cap
+	elif arg2 in arg_market_cap:
+		get_news()
+		print("[*] Market cap: "+ supply[0])
+	elif arg2 in arg_news:
+		get_news()
+		print("[*] Latest news: "+ news[0] + f"\n[*] Source: https://www.coindesk.com/price/{name}")
 
 if __name__ == "__main__":
 	try:
@@ -121,23 +160,45 @@ if __name__ == "__main__":
 				subprocess.call('cls', shell=True)
 			else:
 				subprocess.call('clear', shell=True)
-			get_coin(name)
+
+			# handle optional arguments
+			try:
+				arg2 = sys.argv[2]
+			except IndexError:
+				arg2 = None
+				
+			if arg2 == None:
+				get_coin(name)
+			else:
+				get_coin(name, arg2)
+	
 		else:
 			print('[!] Coin not found.')
 			raise IndexError
 	except IndexError: # put a short documentation here
 		print('''
-CryptoCheck v1.2 (https://github.com/prodseanb/cryptocheck)
+CryptoCheck v1.3 (https://github.com/prodseanb/cryptocheck)
 	Keep track of the latest cryptocurrency data with CryptoCheck.
 Usage:	python3 cryptocheck.py [coin-name]
 	Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
+Output:
+	python3 cryptocheck.py [coin-name] [optional-arg]
+	Maximum of 2 parameters: currency name and display option
+	-a: Display all the results (optional, defaults to None when not used)
+	-p / --price: Display the current price
+	-c / --price-change: Display the 24h price change
+	-tv / --volume: Display the 24h trading volume
+	-lh / --low-high: Display the 24h low/high
+	-d / --dominance: Display the market dominance
+	-s / --supply: Display the circulating supply
+	-mc / --market-cap: Display the market cap
+	-n / --news: Display the latest news
 Examples:
-		
-	python3 cryptocheck.py shiba-inu
-	python3 cryptocheck.py bitcoin
-	python3 cryptocheck.py cardano
+	Try executing these examples.	
+	python3 cryptocheck.py dogecoin -a
+	python3 cryptocheck.py bitcoin --news
+	python3 cryptocheck.py cardano -mc
 			''')
 	except UnboundLocalError:
 		print(f"[!] No news found. Please check https://coinmarketcap.com/currencies/{name}/") 
-
-#Add more options/argv capabilities
+#v1.3 -- 24h price change, market dominance, optional args
