@@ -14,7 +14,7 @@
  *    ╚██████╗██║  ██║   ██║   ██║        ██║   ╚██████╔╝╚██████╗██║  ██║███████╗╚██████╗██║  ██╗
  *     ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝
  *
- *    v1.1      
+ *    v1.2      
  *    @Author: prodseanb
  *    @GitHub: https://github.com/prodseanb
  */
@@ -43,14 +43,17 @@ Planning to add more features. v1.1 commit:
 - 24h trading volume
 - Circulating supply
 ```
-[*] Date and time: 13/06/2021 15:37:52
-[*] Coin: Bitcoin
-[*] Abbrv: (BTC)
-[*] Current Price: $37,449.00
-[*] Rank: Rank #1
-[*] Market Cap: $701.21B
-[*] Latest news: Tesla Will Resume Taking Bitcoin as Payment Once Miners Go 50% Green, Musk Says 
-[*] Source: https://www.coindesk.com/price/bitcoin
+[*] Date and time: 13/06/2021 23:16:01
+[*] Coin: Dogecoin
+[*] Abbrv: (DOGE)
+[*] Current Price: $0.3236
+[*] Rank: Rank #6
+[24h] Low: $0.3079  ------------------  [24h] High: $0.33
+[24h] Trading volume: $1,547,795,850
+[*] Circulating supply: 130.01B DOGE
+[*] Market Cap: $42.08B
+[*] Latest news: No DOGE Allowed? Thai SEC Bans Meme, Fan and Exchange Tokens as Well as NFTs 
+[*] Source: https://www.coindesk.com/price/dogecoin
 ```
 ### Don't forget to install the requirements...
 ```bash
