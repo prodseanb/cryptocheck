@@ -38,6 +38,10 @@ Planning to add more features. v1.1 commit:
 - Market cap
 - Latest news  
 - Documentation
+### v1.2
+- 24h low/high
+- 24h trading volume
+- Circulating supply
 ```
 [*] Date and time: 13/06/2021 15:37:52
 [*] Coin: Bitcoin
@@ -47,6 +51,10 @@ Planning to add more features. v1.1 commit:
 [*] Market Cap: $701.21B
 [*] Latest news: Tesla Will Resume Taking Bitcoin as Payment Once Miners Go 50% Green, Musk Says 
 [*] Source: https://www.coindesk.com/price/bitcoin
+```
+### Don't forget to install the requirements...
+```bash
+pip3 -r install requirements.txt
 ```
 ### License
 [MIT License](https://github.com/prodseanb/cryptocheck/blob/master/LICENSE)

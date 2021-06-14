@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import sys
 from datetime import datetime
+import platform
+import subprocess
 
 		
 def get_other(): #scrape news, market cap, other data from coindesk
@@ -21,10 +23,10 @@ def get_other(): #scrape news, market cap, other data from coindesk
 
 	market = []
 	for a in soup.findAll('div', class_="coin-info-list price-list"):
-		for d in a.findAll('div', class_="coin-info-block"):
-			for e in d.findAll('div', class_="data-definition"):
-				for f in e.findAll('div', class_="price-medium"):
-					val = f.get_text()
+		for b in a.findAll('div', class_="coin-info-block"):
+			for c in b.findAll('div', class_="data-definition"):
+				for d in c.findAll('div', class_="price-medium"):
+					val = d.get_text()
 					market.append(val)
 					market_cap = market[0]
 
@@ -67,6 +69,19 @@ def get_coin(name):
 	for rank in soup.findAll('div', class_="namePill___3p_Ii namePillPrimary___2-GWA"):
 		rank_val = rank.get_text()
 		rank.append(rank_val)
+
+	# 24 low/high value
+	low_high = []
+	for span in soup.findAll('span', class_="highLowValue___GfyK7"):
+		val = span.get_text()
+		low_high.append(val)
+
+	# circulating supply, volume
+	supply = []
+	for div in soup.findAll('div', class_="statsValue___2iaoZ"):
+		val = div.get_text()
+		supply.append(val)
+
 	print('''
 /***
  *     ██████╗██████╗ ██╗   ██╗██████╗ ████████╗ ██████╗  ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗
@@ -76,7 +91,7 @@ def get_coin(name):
  *    ╚██████╗██║  ██║   ██║   ██║        ██║   ╚██████╔╝╚██████╗██║  ██║███████╗╚██████╗██║  ██╗
  *     ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝
  *
- *		v1.1 
+ *		v1.2 
  *		@Author: prodseanb
  *		@GitHub: https://github.com/prodseanb
  *                                                                                              
@@ -90,20 +105,29 @@ def get_coin(name):
 	for index, (val1, val2, val3, val4) in \
 	enumerate(zip(coin, abbrv, price, rank)):
 			print(f"[*] Coin: {val1}\n[*] Abbrv: {val2}\n[*] Current Price: {val3}\n[*] Rank: {val4}")
+
+	print("[24h] Low: " + low_high[0] + "  ------------------  [24h] High: " + low_high[1])
+	print("[24h] Trading volume: " + supply[2])
+	print("[*] Circulating supply: " + supply[4])
 	get_other()
+
 
 if __name__ == "__main__":
 	try:
 		name = sys.argv[1]
 		request = requests.get(f'https://coinmarketcap.com/currencies/{name}')
 		if request.status_code == 200: # check if url exists
+			if platform.system() == "Windows":
+				subprocess.call('cls', shell=True)
+			else:
+				subprocess.call('clear', shell=True)
 			get_coin(name)
 		else:
 			print('[!] Coin not found.')
 			raise IndexError
 	except IndexError: # put a short documentation here
 		print('''
-CryptoCheck v1.1 (https://github.com/prodseanb/cryptocheck)
+CryptoCheck v1.2 (https://github.com/prodseanb/cryptocheck)
 	Keep track of the latest cryptocurrency data with CryptoCheck.
 Usage:	python3 cryptocheck.py [coin-name]
 	Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
@@ -117,5 +141,5 @@ Examples:
 		print(f"[!] No news found. Please check https://coinmarketcap.com/currencies/{name}/") 
 
 #Add more options/argv capabilities
-#scrape 24h volume
+#scrape 24h volume -- done
 #scrape circulating supply
