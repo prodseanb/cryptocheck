@@ -101,6 +101,7 @@ def get_coin(name):
 	now = datetime.now()
 	dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 	print(f"[*] Date and time: {dt_string}")
+
 	#Output
 	for index, (val1, val2, val3, val4) in \
 	enumerate(zip(coin, abbrv, price, rank)):
@@ -110,7 +111,6 @@ def get_coin(name):
 	print("[24h] Trading volume: " + supply[2])
 	print("[*] Circulating supply: " + supply[4])
 	get_other()
-
 
 if __name__ == "__main__":
 	try:
@@ -141,5 +141,3 @@ Examples:
 		print(f"[!] No news found. Please check https://coinmarketcap.com/currencies/{name}/") 
 
 #Add more options/argv capabilities
-#scrape 24h volume -- done
-#scrape circulating supply
