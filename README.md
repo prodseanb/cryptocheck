@@ -84,15 +84,11 @@ Planning to add more features. v1.1 commit:
 [*] Latest news: Bitcoin and Ether Price Indicators Support Near-Term ‘Relief Rally’ 
 [*] Source: https://www.coindesk.com/price/ethereum
 ```
-### Run docker
-Make sure to have docker installed. `docker -v` to check.<br />
-Build the image: 
+### Run on Docker
+Make sure you have Docker installed. `docker -v` to check. 
 ```bash
-sudo docker build -t cryptocheck
-```
-Run interactively:
-```bash
-sudo docker run -t -i cryptocheck [coin-name] [optional-arg]
+sudo docker pull prodseanb/cryptocheck:latest
+sudo docker run -t -i prodseanb/cryptocheck [coin-name] [optional-arg]
 ```
 ### License
 [MIT License](https://github.com/prodseanb/cryptocheck/blob/master/LICENSE)
