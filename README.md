@@ -69,16 +69,6 @@ Planning to add more features. v1.1 commit:
 - 24h price change
 - Market dominance
 - Optional arguments
-### Run docker
-Make sure to have docker installed. `docker -v` to check.<br />
-Build the image: 
-```bash
-sudo docker build -t cryptocheck
-```
-Run interactively:
-```bash
-sudo docker run -t -i cryptocheck [coin-name] [optional-arg]
-```
 ```
 [*] Date and time: 14/06/2021 16:18:10
 [*] Coin: Ethereum
@@ -93,6 +83,16 @@ sudo docker run -t -i cryptocheck [coin-name] [optional-arg]
 [*] Market cap: $296,032,541,530
 [*] Latest news: Bitcoin and Ether Price Indicators Support Near-Term ‘Relief Rally’ 
 [*] Source: https://www.coindesk.com/price/ethereum
+```
+### Run docker
+Make sure to have docker installed. `docker -v` to check.<br />
+Build the image: 
+```bash
+sudo docker build -t cryptocheck
+```
+Run interactively:
+```bash
+sudo docker run -t -i cryptocheck [coin-name] [optional-arg]
 ```
 ### License
 [MIT License](https://github.com/prodseanb/cryptocheck/blob/master/LICENSE)
