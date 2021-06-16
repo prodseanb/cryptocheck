@@ -94,10 +94,6 @@ sudo docker run -t -i cryptocheck [coin-name] [optional-arg]
 [*] Latest news: Bitcoin and Ether Price Indicators Support Near-Term ‘Relief Rally’ 
 [*] Source: https://www.coindesk.com/price/ethereum
 ```
-### Don't forget to install the requirements...
-```bash
-pip3 -r install requirements.txt
-```
 ### License
 [MIT License](https://github.com/prodseanb/cryptocheck/blob/master/LICENSE)
 
