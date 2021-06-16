@@ -69,6 +69,16 @@ Planning to add more features. v1.1 commit:
 - 24h price change
 - Market dominance
 - Optional arguments
+### Run docker
+Make sure to have docker installed. `docker -v` to check.<br />
+Build the image: 
+```bash
+sudo docker build -t cryptocheck
+```
+Run interactively:
+```bash
+sudo docker run -t -i cryptocheck [coin-name] [optional-arg]
+```
 ```
 [*] Date and time: 14/06/2021 16:18:10
 [*] Coin: Ethereum
