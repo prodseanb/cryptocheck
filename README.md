@@ -36,8 +36,8 @@ CryptoCheck v1.4 (https://github.com/prodseanb/cryptocheck)
 Usage:  python3 run.py [coin-name] [*args]
     Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
 Output:
-    python3 cryptocheck.py [coin-name] [optional-arg]
-    Maximum of 2 parameters: currency name and display option
+    python3 run.py [coin-name] [*args]
+    Parameters: currency name and display option(s)
     -a: Display all the results (optional, defaults to None when not used)
     -p / --price: Display the current price
     -c / --price-change: Display the 24h price change
