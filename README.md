@@ -27,7 +27,7 @@ python3 run.py [coin-name] [*args]
 ```
 `argv[1]` must refer to the coin name, converts this argument into a part of the URL to be parsed by [BeautifulSoup](https://pypi.org/project/beautifulsoup4/).
 ```bash
-URL = f"https://coinmarketcap.com/currencies/{name}"
+URL = f"https://coinmarketcap.com/currencies/{sys.argv[1]}"
 ```
 Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
 ```
