@@ -70,7 +70,7 @@ Planning to add more features. v1.1 commit:
 - Market dominance
 - Optional arguments
 ### v1.4
-- Utlize multiple arguments e.g. `python3 run.py bitcoin -M -p -K`
+- Utilize multiple arguments e.g. `python3 run.py bitcoin -M -p -K`
 ```
 [*] Date and time: 14/06/2021 16:18:10
 [*] Coin: Ethereum
