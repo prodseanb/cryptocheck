@@ -14,7 +14,7 @@
  *    ╚██████╗██║  ██║   ██║   ██║        ██║   ╚██████╔╝╚██████╗██║  ██║███████╗╚██████╗██║  ██╗
  *     ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝
  *
- *    v1.3      
+ *    v1.4      
  *    @Author: prodseanb
  *    @GitHub: https://github.com/prodseanb
  */
@@ -23,7 +23,7 @@
 Keep track of the latest cryptocurrency data with CryptoCheck.
 ### Usage
 ```bash
-python3 cryptocheck.py [coin-name]
+python3 run.py [coin-name] [*args]
 ```
 `argv[1]` must refer to the coin name, converts this argument into a part of the URL to be parsed by [BeautifulSoup](https://pypi.org/project/beautifulsoup4/).
 ```bash
@@ -31,9 +31,9 @@ URL = f"https://coinmarketcap.com/currencies/{name}"
 ```
 Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
 ```
-CryptoCheck v1.3 (https://github.com/prodseanb/cryptocheck)
+CryptoCheck v1.4 (https://github.com/prodseanb/cryptocheck)
     Keep track of the latest cryptocurrency data with CryptoCheck.
-Usage:  python3 cryptocheck.py [coin-name]
+Usage:  python3 run.py [coin-name] [*args]
     Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
 Output:
     python3 cryptocheck.py [coin-name] [optional-arg]
@@ -41,17 +41,17 @@ Output:
     -a: Display all the results (optional, defaults to None when not used)
     -p / --price: Display the current price
     -c / --price-change: Display the 24h price change
-    -tv / --volume: Display the 24h trading volume
-    -lh / --low-high: Display the 24h low/high
+    -T / --volume: Display the 24h trading volume
+    -K / --low-high: Display the 24h low/high
     -d / --dominance: Display the market dominance
     -s / --supply: Display the circulating supply
-    -mc / --market-cap: Display the market cap
+    -M / --market-cap: Display the market cap
     -n / --news: Display the latest news
 Examples:
     Try executing these examples.   
-    python3 cryptocheck.py dogecoin -a
-    python3 cryptocheck.py bitcoin --news
-    python3 cryptocheck.py cardano -mc
+    python3 run.py dogecoin -a
+    python3 run.py bitcoin --news -p
+    python3 run.py cardano -M
 ```
 ### v1.0
 - Coin price
@@ -69,6 +69,8 @@ Planning to add more features. v1.1 commit:
 - 24h price change
 - Market dominance
 - Optional arguments
+### v1.4
+- Utlize multiple arguments e.g. `python3 run.py bitcoin -M -p -K`
 ```
 [*] Date and time: 14/06/2021 16:18:10
 [*] Coin: Ethereum
@@ -88,7 +90,7 @@ Planning to add more features. v1.1 commit:
 Make sure you have Docker installed. `docker -v` to check. 
 ```bash
 sudo docker pull prodseanb/cryptocheck:latest
-sudo docker run -t -i prodseanb/cryptocheck [coin-name] [optional-arg]
+sudo docker run -t -i prodseanb/cryptocheck [coin-name] [*args]
 ```
 ### License
 [MIT License](https://github.com/prodseanb/cryptocheck/blob/master/LICENSE)
