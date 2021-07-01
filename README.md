@@ -89,7 +89,7 @@ Planning to add more features. v1.1 commit:
 ### Run on Docker
 Make sure you have Docker installed. `docker -v` to check. 
 ```bash
-sudo docker pull prodseanb/cryptocheck:latest
+sudo docker pull prodseanb/cryptocheck
 sudo docker run -t -i prodseanb/cryptocheck [coin-name] [*args]
 ```
 ### License
