@@ -73,14 +73,14 @@ Planning to add more features. v1.1 commit:
 - Utilize multiple arguments e.g. `python3 run.py bitcoin -M -p -K` <br/>
 
 Output:
-```bash
+```
 [*] Date and time: 02/07/2021 00:35:11
 [*] Current price: $33,117.58
 [24h] Low: $32,811.23  ------------------  [24h] High: $34,447.84
 [*] Market cap: $620,824,927,907
 ```
 Output all (default):
-```bash
+```
 [*] Date and time: 02/07/2021 00:39:33
 [*] Coin: Bitcoin
 [*] Abbrv: (BTC)
