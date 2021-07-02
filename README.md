@@ -81,19 +81,19 @@ Output:
 ```
 Output all (default):
 ```bash
-[*] Date and time: 14/06/2021 16:18:10
-[*] Coin: Ethereum
-[*] Abbrv: (ETH)
-[*] Current price: $2,545.63
-[*] Rank: Rank #2
-[24h] Low: $2,469.39  ------------------  [24h] High: $2,606.43
-[24h] Trading volume: $28,941,341,401
-[24h] Price change: $60.43
-[*] Market dominance: 18.27%
-[*] Circulating supply: 116,290,438.81 ETH
-[*] Market cap: $296,032,541,530
-[*] Latest news: Bitcoin and Ether Price Indicators Support Near-Term ‘Relief Rally’ 
-[*] Source: https://www.coindesk.com/price/ethereum
+[*] Date and time: 02/07/2021 00:39:33
+[*] Coin: Bitcoin
+[*] Abbrv: (BTC)
+[*] Current price: $33,027.32
+[*] Rank: Rank #1
+[24h] Low: $32,811.23  ------------------  [24h] High: $34,447.84
+[24h] Trading volume: $35,025,072,352
+[24h] Price change: $-1,120.07
+[*] Market dominance: 45.63%
+[*] Circulating supply: 18,746,081.00 BTC
+[*] Market cap: $619,132,732,901
+[*] Latest news: Fake Covid Certificates, Stolen Vaccines Sold on Darkweb for Bitcoin 
+[*] Source: https://www.coindesk.com/price/bitcoin
 ```
 ### Run on Docker
 Make sure you have Docker installed. `docker -v` to check. 
