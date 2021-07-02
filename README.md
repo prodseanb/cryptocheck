@@ -5,7 +5,7 @@
 [![Generic badge](https://img.shields.io/badge/follow-Twitter-<COLOR>.svg)](https://twitter.com/prodseanb)
 [![PyPI status](https://img.shields.io/pypi/status/ansicolortags.svg)](https://github.com/prodseanb/cryptocheck/blob/master/cryptocheck.py)
 <br />
-```
+```bash
 /***
  *     ██████╗██████╗ ██╗   ██╗██████╗ ████████╗ ██████╗  ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗
  *    ██╔════╝██╔══██╗╚██╗ ██╔╝██╔══██╗╚══██╔══╝██╔═══██╗██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝
@@ -30,7 +30,7 @@ python3 run.py [coin-name] [*args]
 URL = f"https://coinmarketcap.com/currencies/{sys.argv[1]}"
 ```
 Appends [coin-name] argument to URL. Make sure multiple-word coins are separated by a "-" hyphen.
-```
+```bash
 CryptoCheck v1.4 (https://github.com/prodseanb/cryptocheck)
     Keep track of the latest cryptocurrency data with CryptoCheck.
 Usage:  python3 run.py [coin-name] [*args]
@@ -80,7 +80,7 @@ Output:
 [*] Market cap: $620,824,927,907
 ```
 Output all (default):
-```
+```bash
 [*] Date and time: 14/06/2021 16:18:10
 [*] Coin: Ethereum
 [*] Abbrv: (ETH)
