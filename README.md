@@ -21,6 +21,16 @@
 ```
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/) <br />
 Keep track of the latest cryptocurrency data with CryptoCheck.
+### Installation
+Clone repo:
+```bash
+git clone https://github.com/prodseanb/cryptocheck.git
+```
+Install requirements:
+```bash
+cd cryptocheck
+pip3 install -r requirements.txt
+```
 ### Usage
 ```bash
 python3 run.py [coin-name] [*args]
